@@ -1,0 +1,45 @@
+{% extends 'users/base.html' %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+{% block content %}
+    <div class="container">
+      <form method="POST">{% csrf_token %}
+            <h1>FORMULAIRE D'INSCRIPTION PROFESSEURS</h1>
+        
+        {% if messages%}
+            {% for message in messages%}
+                <div class="alert alert-{{message.tags}}">{{message}}</div>
+            {% endfor %}
+        {%endif%}
+        <div class="row">
+            <div class="col">
+              <label for=`{prof_form.prenom}`>Prenom</label>
+              {{prof_form.prenom|add_class:'form-control border border-warning rounded'}}
+            </div>
+            <div class="col">
+              <label for=`{prof_form.nom}`>Nom</label>
+              {{prof_form.nom|add_class:'form-control border border-warning rounded'}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label for=`{prof_form.email}`>Adresse Mail</label>
+              {{prof_form.email|add_class:'form-control border border-warning rounded'}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label for=`{prof_form.contact_prof}`>Contact</label>
+              {{prof_form.contact_prof|add_class:'form-control border border-warning rounded'}}
+            </div>
+            <div class="col">
+              <label for="{{prof_form.id_for_label}}">Date d'adhesion</label>
+              {{prof_form.date_d_adhesion|add_class:'form-control border border-warning rounded'}}
+            </div>
+          </div>
+          <label for="{{ prof_form. }}"> {{ prof_form.id_for_label }}Chef de departement</label>
+          {{prof_form.chef_departement| add_class:'btn'}}
+          <input type='submit' value='SOUMETTRE' />
+      </form>
+    </div>
+    {% endblock %}

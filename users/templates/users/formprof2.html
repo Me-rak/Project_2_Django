@@ -1,0 +1,41 @@
+{% extends 'users/base.html' %}
+{% block content %}
+    {% if messages%}
+        {% for message in messages%}
+            <div class="alert alert-{{message.tags}}">{{message}}</div>
+        {% endfor %}
+    {%endif%}
+    <form action='.' method='POST'>{% csrf_token %}
+        <div class="container">
+            <h1>FORMULAIRE D'INSCRIPTION PROFESSEURS</h1>
+            <div class="row row-cols-2">
+                <div class="col-6">
+                    <label for="Prenom">Prenom</label>
+                    <input type="text" name="prenom" class="form-control border border-warning rounded" id="Prenom" width="50px">
+                </div>
+                <div class="col-6">
+                    <label for="Nom">Nom</label>
+                    <input type="text" name="nom" class="form-control border border-warning rounded" id="Nom">
+                </div>
+                <div class="col-12">
+                    <label for="Email"  class="form-label">Adresse Mail</label>
+                    <input type="email" name="email" class="form-control border border-warning rounded" id="Email" placeholder='example@ept.sn'>
+                </div>
+                <div class="col-6">
+                    <label for="Contact"  class="form-label">Contact</label>
+                    <input type="text" name="contact_prof" class="form-control border border-warning rounded" id="Contact" placeholder='+221 xx xxx xx xx'>
+                </div>
+                <div class="col-6">
+                    <label for="Date" class="form-label">Date d'adhesion</label>
+                    <input type="date" name="date_d_adhesion" class="form-control border border-warning rounded" id="Date">
+                </div>
+                <div class="col">
+                    <label for="chef_dep" class="form-label">Chef de departement</label>
+                    <input type="checkbox" class="btn" data-val="True" and value="True"  name="chef_departement" id="chef_dep" class="p-3 mb-2 bg-warning text-dark">
+                </div>
+            </div>
+            
+            <input type='submit'  value='SOUMETTRE' />
+        </div>
+    </form>
+{% endblock %}
